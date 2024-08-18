@@ -4,6 +4,11 @@ Python을 사용하여 MyData 기술 가이드라인 및 표준 API 규격에 �
 
 # 환경 
 python 3.10 이상 
+FastAPI: 0.95.1
+Streamlit: 1.37.1
+PyMuPDF: 1.19.0
+LangChain: 0.57.0
+OpenAI API: gpt-4
 
 ## 주요 기능
 - **PDF 기반 RAG(Retrieval-Augmented Generation)**: 마이데이터 관련 PDF 문서를 기반으로 질문에 답변합니다.
