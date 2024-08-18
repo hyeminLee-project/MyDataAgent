@@ -23,6 +23,40 @@ OpenAI API: gpt-4
 
 
 
+# mydata-agent 프로젝트 구조 
+
+📦app                                                           # 애플리케이션의 주요 비즈니스 로직과 관련된 모듈을 포함한 폴더 
+ ┣ 📜__init__.py                                                # app 모듈을 초기화하는 파일
+ ┣ 📜config.py                                                  # 환경 설정과 관련된 설정값을 관리 (OpenAI API 키 설정)
+ ┣ 📜conversation_manager.py                                    # 대화 관리, 질문 처리, 추가 질문 생성 로직을 관리
+ ┣ 📜db_utils.py                                                # 데이터베이스와의 상호작용을 관리 (대화 이력 저장 및 조회 기능이 포함)
+ ┣ 📜main.py                                                    # FastAPI 서버의 진입점으로, API 엔드포인트를 정의하고 서버를 실행
+ ┣ 📜models.py                                                  # RAGPipeline 및 AI 모델 호출을 위한 로직을 포함
+ ┣ 📜pdf_processor.py                                           # PDF 파일에서 텍스트를 추출하고 이를 청크로 나누는 처리 로직 관리 
+ ┣ 📜qa_chain_setup.py                                          # 질의응답 체인 설정과 관련된 로직 관리 (임베딩 및 벡터 저장소 초기화가 포함)
+ ┗ 📜utils.py                                                   # 기타 유틸리티 함수들을 포함
+  📦data                                                        # PDF 파일이 저장되는 디렉토리
+ ┣ 📜(221115 수정배포) (2022.10) 금융분야 마이데이터 기술 가이드라인.pdf    
+ ┣ 📜(수정게시) 금융분야 마이데이터 표준 API 규격 v1.pdf
+ 📦frontend                                                     # 프론트엔드 관련 파일을 포함
+ ┗ 📜streamlit_app.py                                           # Streamlit 기반의 사용자 인터페이스를 정의
+ 📦tests                                                        # 각 모듈의 기능을 검증 밑 테스트 코드 폴더
+ ┣ 📜test_conversation_manager.py                               # conversation_manager 모듈의 테스트
+ ┣ 📜test_import.py                                             # 다양한 모듈 임포트에 대한 테스트
+ ┣ 📜test_main.py                                               # main.py의 API 엔드포인트에 대한 테스트
+ ┣ 📜test_models.py                                             # models.py에서 정의된 로직에 대한 테스트
+ ┣ 📜test_pdf_processor.py                                      # pdf_processor.py 모듈의 텍스트 추출 및 청크 처리 로직에 대한 테스트
+ ┣ 📜test_qa_chain_setup.py                                     # qa_chain_setup.py의 질의응답 체인 설정 로직에 대한 테스트
+ ┗ 📜test_transformers.py                                       # Transformers 라이브러리와 관련된 테스트
+ 📦asset                                                        # 테스트용 샘플 파일들을 포함
+ ┣ 📜image_test.png                                             # 이미지 입력 테스트를 위한 샘플 이미지 파일
+ ┣ 📜금융마이데이터.mp3                                             # 음성 입력 테스트를 위한 샘플 MP3 파일
+ ┗ 📜마이데이터 질문.mp3   
+   
+ 📜.gitignore                                                   # Git에 포함시키지 않을 파일 및 디렉토리를 정의
+ 📜requirements.txt                                             # 프로젝트에 필요한 파이썬 패키지와 버전을 명시
+                       
+
 
 
 ## 주요 기능
