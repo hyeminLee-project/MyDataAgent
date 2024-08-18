@@ -97,36 +97,6 @@ pytest
 
 (예시) pytest tests/test_models.py
 
-# 프로젝트 구조 
-
-
-my_project/
-│
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── models.py
-│   ├── conversation_manager.py
-│   ├── utils.py
-│   ├── db_utils.py
-│   ├── pdf_processor.py
-│   ├── qa_chain_setup.py
-│
-├── frontend/
-│   └── streamlit_app.py
-│
-├── tests/
-│   ├── test_conversation_manager.py
-│   ├── test_utils.py
-│   ├── test_main.py
-│   ├── test_transformers.py
-│   └── test_pdf_processor.py
-│
-├── requirements.txt
-├── README.md
-└── config.py
-
-
 
 
 
