@@ -6,3 +6,4 @@ myenv/
 myenv/
 .DS_Store
 faiss/
+.streamlit/
