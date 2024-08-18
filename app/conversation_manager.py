@@ -18,6 +18,8 @@ import os
 import urllib.request
 
 if not os.path.exists('korean_stopwords.txt'):
+
+    # 외부 불용어 목록 다운로드 
     urllib.request.urlretrieve(
         "https://raw.githubusercontent.com/byungjooyoo/Dataset/main/korean_stopwords.txt", 
         "korean_stopwords.txt"
@@ -27,7 +29,7 @@ if not os.path.exists('korean_stopwords.txt'):
 with open('korean_stopwords.txt', 'r') as f:
     stop_words = f.read().split("\n")
 
-# 추가 불용어
+# 추가 불용어 설정
 additional_stop_words = ['는', '은', '두']  # 필요한 경우 추가 불용어
 stop_words = additional_stop_words + stop_words
 
@@ -35,16 +37,19 @@ stop_words = additional_stop_words + stop_words
 #print("불용어 예시:", stop_words[:10])
 
 
-# 불용어 제거 함수
+# 불용어를 제거하는 함수
 def remove_postpositions(word, stop_words):
     pattern = '|'.join([f'{stop_word}$' for stop_word in stop_words])
     return re.sub(pattern, '', word)
 
 # 질문을 처리하여 단어 조합을 생성하는 함수
 def process_question(question):
+    # 질문을 단어로 토큰화 
     words = word_tokenize(question)
+    # 불용어 제거 및 알파벳과 숫자로 구성된 단어만 필터링
     filtered_words = [remove_postpositions(word, stop_words) for word in words if word.isalnum()]
     combinations_list = []
+    # 가능한 모든 단어 조합을 생성 
     for r in range(len(filtered_words), 1, -1):
         combinations_list.extend([' '.join(combo) for combo in combinations(filtered_words, r)])
     return combinations_list
