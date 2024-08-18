@@ -89,7 +89,10 @@ uvicorn app.main:app --host 127.0.0.1 --port 8001 --reload
 
 # Streamlit 앱 실행 방법 
 
-streamlit run app/frontend/streamlit_app.py
+streamlit run frontend/streamlit_app.py --server.enableXsrfProtection false
+
+streamlit 앱에서 파일 업로드 시에 --server.enableXsrfProtection false 안하면 403 에러 발생함
+
 
 # 테스트 실행 방법
 
