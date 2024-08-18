@@ -13,6 +13,7 @@ from chromadb.config import Settings
 from app.config import OPENAI_API_KEY
 from app.pdf_processor import extract_text_from_pdfs, chunk_text
 
+# OpenAI API 키를 설정하지 않은 경우 오류 발생
 openai_api_key = OPENAI_API_KEY
 if not openai_api_key:
     raise ValueError("OpenAI API key is not set. Please set the OPENAI_API_KEY environment variable.")
@@ -34,10 +35,12 @@ class ConversationHistory:
 class RAGPipeline:
     def __init__(self, documents):
         self.documents = documents
+         # OpenAI 임베딩을 사용하여 벡터 생성
         self.embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
         client_settings = Settings()  # 기본 설정 사용
+         # Chroma 벡터 저장소에 문서를 저장
         self.vectorstore = Chroma.from_documents(documents, self.embeddings, client_settings=client_settings)
-
+         # LLM 모델 설정
         self.llm = ChatOpenAI(openai_api_key=openai_api_key, model_name="gpt-4o")
 
         
@@ -53,9 +56,11 @@ class RAGPipeline:
             
     def answer(self, query: str, model="gpt-4") -> str:
         try:
+            # 질문과 유사한 문서를 검색
             relevant_docs = self.search_documents(query)
             combined_text = " ".join([doc.page_content for doc in relevant_docs])
             #response = self.llm.completions.create(
+             # LLM을 사용하여 답변 생성
             response = self.llm(
                 #model=model,
                 messages=[
