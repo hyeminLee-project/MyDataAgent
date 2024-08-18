@@ -99,6 +99,7 @@ pytest
 
 # 프로젝트 구조 
 
+
 my_project/
 │
 ├── app/
@@ -124,6 +125,8 @@ my_project/
 ├── requirements.txt
 ├── README.md
 └── config.py
+
+
 
 
 
