@@ -15,6 +15,14 @@ LangChain: 0.57.0
 
 OpenAI API: gpt-4
 
+
+
+<img width="1030" alt="project architecture_capture" src="https://github.com/user-attachments/assets/75a39e57-4bb3-4cda-bd60-95e0937770be">
+
+
+
+
+
 ## 주요 기능
 
 ### 1. **PDF 기반 RAG (Retrieval-Augmented Generation)**
